@@ -21,11 +21,11 @@
 <main class="workpage">
   <div class="whead grid">
     <p class="label"><a href="../index.html#work">Selected work</a> / 02</p>
-    <p class="q">Which artists kept making great records as they aged?</p>
+    <p class="q">Which artists kept making great music as they aged?</p>
     <h1>Matter of Records</h1>
     <img class="wlogo" src="../logos/mor.svg" style="--lw:380px" alt="Matter of Records logo">
   </div>
-  <figure class="hero"><img src="../img/mor-1.jpg" width="2400" height="1500" alt="Matter of Records home page with the Top 20 Ever lists" loading="lazy"></figure>
+  <figure class="hero"><video data-src="../img/mor-hero.mp4" poster="../img/mor-hero.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="Switching the Top 20 Ever between critics, fans, sales and chart peaks, then opening Prince&#x27;s career"></video></figure>
   <div class="wbody grid">
     <p class="lede">Music careers rated album by album. Critics, fans, sales and chart peaks for more than a hundred artists, side by side.</p>
     <div class="text">
@@ -68,6 +68,13 @@
 (function(){var el=document.querySelector('.bigname');if(!el)return;
 function fit(){el.style.fontSize='100px';var w=el.parentElement.clientWidth,r=el.scrollWidth;el.style.fontSize=(100*w/r*0.995)+'px';}
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);addEventListener('resize',fit);})();
+// Motion heroes: load and play only while on screen; stills only for reduced motion.
+(function(){var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(!vs.length)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function start(v){if(!v.src){v.src=v.dataset.src;}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+if(!('IntersectionObserver' in window)){vs.forEach(start);return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start(e.target);else e.target.pause();});},{rootMargin:'200px 0px'});
+vs.forEach(function(v){io.observe(v);});})();
 </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
     <h1>Champs Ring</h1>
     <img class="wlogo" src="../logos/cr.svg" style="--lw:220px" alt="Champs Ring logo">
   </div>
-  <figure class="hero"><img src="../img/cr-1.jpg" width="1200" height="800" alt="Framed NBA 1947–2026 Champs Ring history print on a wall" loading="lazy"></figure>
+  <figure class="hero"><video data-src="../img/cr-hero.mp4" poster="../img/cr-hero.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="A slow push-in from the framed NBA 1947–2026 history print to its radial brackets"></video></figure>
   <div class="wbody grid">
     <p class="lede">Every playoff as a radial bracket: champion at the center, first round outside. Drawn at Hyperakt in 2012, revived in 2026 as fine-art prints.</p>
     <div class="text">
@@ -72,6 +72,13 @@
 (function(){var el=document.querySelector('.bigname');if(!el)return;
 function fit(){el.style.fontSize='100px';var w=el.parentElement.clientWidth,r=el.scrollWidth;el.style.fontSize=(100*w/r*0.995)+'px';}
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);addEventListener('resize',fit);})();
+// Motion heroes: load and play only while on screen; stills only for reduced motion.
+(function(){var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(!vs.length)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function start(v){if(!v.src){v.src=v.dataset.src;}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+if(!('IntersectionObserver' in window)){vs.forEach(start);return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start(e.target);else e.target.pause();});},{rootMargin:'200px 0px'});
+vs.forEach(function(v){io.observe(v);});})();
 </script>
 </body>
 </html>

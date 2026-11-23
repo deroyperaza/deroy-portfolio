@@ -25,7 +25,7 @@
     <h1>On the Grid</h1>
     <img class="wlogo" src="../logos/otg.svg" style="--lw:220px" alt="On the Grid logo">
   </div>
-  <figure class="hero"><img src="../img/otg-1.jpg" width="2400" height="1500" alt="On the Grid home page" loading="lazy"></figure>
+  <figure class="hero"><video data-src="../img/otg-hero.mp4" poster="../img/otg-hero.jpg" width="1920" height="1200" muted loop playsinline preload="none" aria-label="From the Brooklyn city page into the Carroll Gardens guide, then a place&#x27;s photo essay"></video></figure>
   <div class="wbody grid">
     <p class="lede">A designer&#x27;s guide to neighborhood gems. Started in Gowanus at Hyperakt, it grew to 534 guides in 114 cities, each curated by local creatives.</p>
     <div class="text">
@@ -72,6 +72,13 @@
 (function(){var el=document.querySelector('.bigname');if(!el)return;
 function fit(){el.style.fontSize='100px';var w=el.parentElement.clientWidth,r=el.scrollWidth;el.style.fontSize=(100*w/r*0.995)+'px';}
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);addEventListener('resize',fit);})();
+// Motion heroes: load and play only while on screen; stills only for reduced motion.
+(function(){var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(!vs.length)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function start(v){if(!v.src){v.src=v.dataset.src;}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+if(!('IntersectionObserver' in window)){vs.forEach(start);return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start(e.target);else e.target.pause();});},{rootMargin:'200px 0px'});
+vs.forEach(function(v){io.observe(v);});})();
 </script>
 </body>
 </html>

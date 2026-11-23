@@ -121,12 +121,14 @@ p { text-wrap: pretty; }
   letter-spacing: -0.04em;
 }
 .head .desc { grid-column: 8 / span 3; font-size: 16px; line-height: 1.35; max-width: 34ch; }
-.facts { grid-column: 11 / span 2; display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; }
+.facts { grid-column: 11 / span 2; display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 4px; font-size: 15px; line-height: 1.35; }
 .facts dt { color: var(--mute); }
 .facts dd { overflow-wrap: anywhere; }
+.facts dt, .facts dd { font-size: 15px; line-height: 1.35; font-weight: 400; letter-spacing: 0; }
 .facts dd a { text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 
 .hero { margin-bottom: var(--g); }
+.hero video { display: block; width: 100%; height: auto; background: #1d2330; }
 
 /* leading question above each project title */
 .head .q { grid-column: 2 / span 6; }
@@ -272,3 +274,5 @@ p { text-wrap: pretty; }
   .portrait, .biotext, .afacts { grid-column: 1 / -1; }
   .biotext { margin-top: 24px; }
 }
+
+@media (prefers-reduced-motion: reduce) { .hero video { animation: none; } }
