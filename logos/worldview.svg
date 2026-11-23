@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100" fill="none" stroke="currentColor" role="img" aria-label="Worldview symbol: a globe with an eye at its center">
+  <ellipse cx="80" cy="50" rx="56" ry="45" stroke-width="3.5"/>
+  <ellipse cx="80" cy="50" rx="35" ry="45" stroke-width="3.5"/>
+  <path d="M80 5C101 24 101 76 80 95C59 76 59 24 80 5Z" stroke-width="8" stroke-linejoin="round"/>
+  <ellipse cx="80" cy="50" rx="75" ry="45" stroke-width="8"/>
+  <circle cx="80" cy="50" r="10" fill="currentColor" stroke="none"/>
+</svg>
