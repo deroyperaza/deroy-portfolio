@@ -128,7 +128,7 @@ p { text-wrap: pretty; }
 .facts dd a { text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 
 .hero { margin-bottom: var(--g); }
-.hero video { display: block; width: 100%; max-width: 1200px; height: auto; background: #1d2330; }
+.hero video { display: block; width: 100%; max-width: 1200px; height: auto; margin-inline: auto; background: #1d2330; }
 
 /* leading question above each project title */
 .head .q { grid-column: 2 / span 6; }
